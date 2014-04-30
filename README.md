@@ -5,7 +5,7 @@ Azure Blob Storage client provides a way how to structure blobs in storage using
 
 This package provides easy file system abstraction and two implementations storing through azure blob storage or local disk. These implementations are interchangeable and you can easily switch between them in different environments.
 
-*Source codes of this library were partially taken from Orchard CMS project. All the credit goes to Orchard team*
+*Source codes of this library were partially taken from Orchard CMS project. The credit goes to Orchard team.*
 
 ##Installation
 

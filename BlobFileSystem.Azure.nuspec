@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>BlobFileSystem.Azure</id>
+    <title>File System In Azure Blob Storage</title>
+    <authors>Jan Blaha</authors>
+    <version>0.0.0.0</version>
+    <owners>Jan Blaha</owners>
+    <description>
+      File system abstraction and two implementations storing throught azure blob storage or 
+      local disk. Implementations can be then replaced between development, testing and production.
+    </description>
+    <projectUrl>https://github.com/pofider/AzureBlobFileSystem</projectUrl>
+    <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>   
+    <copyright>Copyright 2014 Jan Blaha</copyright>
+    <language>en-us</language>
+    <tags>azure blob storage filesystem directory abstraction</tags>
+    <dependencies>   
+      <dependency id="WindowsAzure.Storage" version="3.1.0.1" />    
+    </dependencies>
+  </metadata>
+  <files>   
+    <file src="AzureBlobFileSystem\bin\Release\AzureBlobFileSystem.dll" target="lib\net45\AzureBlobFileSystem.dll" />    
+  </files>
+</package>

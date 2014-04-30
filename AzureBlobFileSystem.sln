@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureBlobFileSystem", "AzureBlobFileSystem\AzureBlobFileSystem.csproj", "{FA608600-4A63-497E-BB7E-57CE59EF7E61}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1C5F987C-F859-439D-BC11-82DBA4C641CA}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureBlobFileSystem.Test", "AzureBlobFileSystem.Test\AzureBlobFileSystem.Test.csproj", "{84F6D56B-37F2-4083-A150-EC4ACD9BBA98}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AEA43007-A07B-4E1F-9ADD-707A9D1EDBC3}"
+	ProjectSection(SolutionItems) = preProject
+		BlobFileSystem.Azure.nuspec = BlobFileSystem.Azure.nuspec
+		nugetpack.cmd = nugetpack.cmd
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA608600-4A63-497E-BB7E-57CE59EF7E61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA608600-4A63-497E-BB7E-57CE59EF7E61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA608600-4A63-497E-BB7E-57CE59EF7E61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA608600-4A63-497E-BB7E-57CE59EF7E61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84F6D56B-37F2-4083-A150-EC4ACD9BBA98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84F6D56B-37F2-4083-A150-EC4ACD9BBA98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84F6D56B-37F2-4083-A150-EC4ACD9BBA98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84F6D56B-37F2-4083-A150-EC4ACD9BBA98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

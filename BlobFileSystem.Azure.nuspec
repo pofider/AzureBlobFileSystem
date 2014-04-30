@@ -6,10 +6,7 @@
     <authors>Jan Blaha</authors>
     <version>0.0.0.0</version>
     <owners>Jan Blaha</owners>
-    <description>
-      File system abstraction and two implementations storing throught azure blob storage or 
-      local disk. Implementations can be then replaced between development, testing and production.
-    </description>
+    <description>This package provides easy file system abstraction and two implementations storing through azure blob storage or local disk. These implementations are interchangeable and you can easily switch between them in different environments.</description>
     <projectUrl>https://github.com/pofider/AzureBlobFileSystem</projectUrl>
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>   
     <copyright>Copyright 2014 Jan Blaha</copyright>

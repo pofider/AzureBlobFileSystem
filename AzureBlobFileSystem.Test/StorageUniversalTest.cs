@@ -49,6 +49,18 @@ namespace AzureBlobFileSystem.Test
         }
 
         [Test]
+        public void getSize_should_return_numOfBytes()
+        {
+            using (var stream = SUT.CreateFile(SUT.Combine(TEST_FOLDER, "test.txt")).OpenWrite())
+            {
+                stream.Write(new byte[] { 1 }, 0, 1);
+            }
+
+            Assert.AreEqual(1, SUT.GetFile(SUT.Combine(TEST_FOLDER, "test.txt")).GetSize());
+        }
+
+
+        [Test]
         public void update_file_content()
         {
             using (var stream = SUT.CreateFile(SUT.Combine(TEST_FOLDER, "test.txt")).OpenWrite())

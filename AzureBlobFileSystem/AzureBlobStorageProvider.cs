@@ -374,11 +374,21 @@ namespace AzureBlobFileSystem
         {
             private CloudBlockBlob _blob;
             private readonly AzureBlobStorageProvider _azureFileSystem;
+            private bool _hasFetchedAttributes = false;
 
             public AzureBlobFileStorage(CloudBlockBlob blob, AzureBlobStorageProvider azureFileSystem)
             {
                 _blob = blob;
                 _azureFileSystem = azureFileSystem;
+            }
+
+            private void EnsureAttributes()
+            {
+                if (_hasFetchedAttributes)
+                    return;
+
+                _blob.FetchAttributes();
+                _hasFetchedAttributes = true;
             }
 
             public string GetPath()
@@ -393,11 +403,13 @@ namespace AzureBlobFileSystem
 
             public long GetSize()
             {
+                EnsureAttributes();
                 return _blob.Properties.Length;
             }
 
             public DateTime GetLastUpdated()
             {
+                EnsureAttributes();
                 return _blob.Properties.LastModified == null ? DateTime.MinValue : _blob.Properties.LastModified.Value.UtcDateTime;
             }
 

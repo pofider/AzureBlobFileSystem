@@ -103,5 +103,14 @@ namespace AzureBlobFileSystem
         string Combine(string path1, string path2);
 
         bool FileExists(string path);
+
+
+        /// <summary>
+        /// Gets or sets the default shared access expiration date.
+        /// </summary>
+        /// <value>
+        /// The default shared access expiration date.
+        /// </value>
+        DateTimeOffset? DefaultSharedAccessExpiration { get; set; }
     }
 }

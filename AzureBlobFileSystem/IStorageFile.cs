@@ -10,7 +10,7 @@ namespace AzureBlobFileSystem
         long GetSize();
         DateTime GetLastUpdated();
         string GetFileType();
-        string GetSharedAccessPath();
+        string GetSharedAccessPath(DateTimeOffset? expiration = null);
 
         /// <summary>
         /// Creates a stream for reading from the file.

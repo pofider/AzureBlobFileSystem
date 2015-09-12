@@ -306,6 +306,8 @@ namespace AzureBlobFileSystem
             return new FileInfo(MapStorage(path)).Exists;
         }
 
+        public DateTimeOffset? DefaultSharedAccessExpiration { get; set; }
+
         public IStorageFile CreateOrReplaceFile(string path)
         {
             if (FileExists(path))
@@ -359,7 +361,7 @@ namespace AzureBlobFileSystem
                 return _fileInfo.Extension;
             }
 
-            public string GetSharedAccessPath()
+            public string GetSharedAccessPath(DateTimeOffset? expiration = null)
             {
                 return _path;
             }

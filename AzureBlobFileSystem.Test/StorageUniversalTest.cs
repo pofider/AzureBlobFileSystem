@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using NUnit.Framework;
@@ -205,6 +206,44 @@ namespace AzureBlobFileSystem.Test
             SUT.RenameFolder(folder, folder + "2");
 
             Assert.AreEqual("f1", SUT.ListFiles(folder + "2").Single().GetName());
+        }
+
+        [Test]
+        public void sharedPath_should_return_when_given_offset()
+        {
+            var folder = SUT.Combine(TEST_FOLDER, "folder");
+            SUT.CreateFolder(folder);
+
+            SUT.CreateFile(SUT.Combine(folder, "f1"));
+
+            var offset = DateTimeOffset.MaxValue;
+
+            Assert.DoesNotThrow(() =>
+            {
+                var file = SUT.ListFiles(folder).First();
+                var path = file.GetPath();
+                var sharedPath = file.GetSharedAccessPath(offset);
+                Trace.WriteLine(path);
+                Trace.WriteLine(sharedPath);
+            });
+        }
+
+        [Test]
+        public void sharedPath_should_return_when_not_given_offset()
+        {
+            var folder = SUT.Combine(TEST_FOLDER, "folder");
+            SUT.CreateFolder(folder);
+
+            SUT.CreateFile(SUT.Combine(folder, "f1"));
+
+            Assert.DoesNotThrow(() =>
+            {
+                var file = SUT.ListFiles(folder).First();
+                var path = file.GetPath();
+                var sharedPath = file.GetSharedAccessPath();
+                Trace.WriteLine(path);
+                Trace.WriteLine(sharedPath);
+            });
         }
     }
 }

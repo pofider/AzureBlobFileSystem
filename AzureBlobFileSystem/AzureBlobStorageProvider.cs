@@ -103,6 +103,8 @@ namespace AzureBlobFileSystem
             return container.BlobExists(path);
         }
 
+        public DateTimeOffset? DefaultSharedAccessExpiration { get; set; }
+
         public IEnumerable<IStorageFile> ListFiles(string path)
         {
             path = path ?? String.Empty;
@@ -417,12 +419,12 @@ namespace AzureBlobFileSystem
             {
                 return Path.GetExtension(GetPath());
             }
-
-            public string GetSharedAccessPath()
+            
+            public string GetSharedAccessPath(DateTimeOffset? expiration = null)
             {
                 return _blob.Uri.AbsoluteUri + _blob.GetSharedAccessSignature(new SharedAccessBlobPolicy()
                 {
-                    SharedAccessExpiryTime = DateTime.MaxValue
+                    SharedAccessExpiryTime = expiration ?? _azureFileSystem.DefaultSharedAccessExpiration
                 }, "default");
             }
 

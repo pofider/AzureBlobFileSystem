@@ -79,6 +79,7 @@
     <Compile Include="IStorageProvider.cs" />
     <Compile Include="PathValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SasPermissionFlags.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

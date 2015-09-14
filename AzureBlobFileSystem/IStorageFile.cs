@@ -10,7 +10,7 @@ namespace AzureBlobFileSystem
         long GetSize();
         DateTime GetLastUpdated();
         string GetFileType();
-        string GetSharedAccessPath(DateTimeOffset? expiration = null);
+        string GetSharedAccessPath(DateTimeOffset? expiration = null, SasPermissionFlags permissions = SasPermissionFlags.Read);
 
         /// <summary>
         /// Creates a stream for reading from the file.

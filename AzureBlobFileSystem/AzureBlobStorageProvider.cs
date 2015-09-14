@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
@@ -420,12 +421,15 @@ namespace AzureBlobFileSystem
                 return Path.GetExtension(GetPath());
             }
             
-            public string GetSharedAccessPath(DateTimeOffset? expiration = null)
+            public string GetSharedAccessPath(DateTimeOffset? expiration = null, SasPermissionFlags permissions = SasPermissionFlags.Read)
             {
-                return _blob.Uri.AbsoluteUri + _blob.GetSharedAccessSignature(new SharedAccessBlobPolicy()
+                var sasToken = _blob.GetSharedAccessSignature(new SharedAccessBlobPolicy()
                 {
-                    SharedAccessExpiryTime = expiration ?? _azureFileSystem.DefaultSharedAccessExpiration
-                }, "default");
+                    SharedAccessExpiryTime = expiration ?? _azureFileSystem.DefaultSharedAccessExpiration,
+                    Permissions = GetSharedAccessBlobPermissions(permissions)
+                });
+
+                return string.Format(CultureInfo.InvariantCulture, "{0}{1}", _blob.Uri, sasToken);
             }
 
             public Stream OpenRead()
@@ -447,6 +451,11 @@ namespace AzureBlobFileSystem
                 _blob.OpenWrite().Dispose(); // force file creation
 
                 return OpenWrite();
+            }
+
+            private static SharedAccessBlobPermissions GetSharedAccessBlobPermissions(SasPermissionFlags flags)
+            {
+                return (SharedAccessBlobPermissions)flags;
             }
         }
 

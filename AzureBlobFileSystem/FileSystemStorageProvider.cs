@@ -361,7 +361,7 @@ namespace AzureBlobFileSystem
                 return _fileInfo.Extension;
             }
 
-            public string GetSharedAccessPath(DateTimeOffset? expiration = null)
+            public string GetSharedAccessPath(DateTimeOffset? expiration = null, SasPermissionFlags permissions = SasPermissionFlags.Read)
             {
                 return _path;
             }

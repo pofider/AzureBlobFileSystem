@@ -14,6 +14,7 @@ namespace AzureBlobFileSystem
     public class AzureBlobStorageProvider  : IStorageProvider
     {
         private readonly CloudStorageAccount _storageAccount;
+        private Object _lock = new Object();
         public CloudBlobClient BlobClient { get; private set; }
         public IList<CloudBlobContainer> Containers { get; private set; }
         public Func<string, CloudBlobContainer> ContainerFactory;
@@ -30,18 +31,22 @@ namespace AzureBlobFileSystem
         {
             var containerName = path.Split('/').First();
 
-            var container = Containers.SingleOrDefault(c => c.Name == containerName);
-
-            if (container == null)
+            CloudBlobContainer container;
+            lock (_lock)
             {
-                container = BlobClient.GetContainerReference(containerName);
-                
-                if (!container.Exists())
-                {
-                    container = ContainerFactory(containerName);
-                }
+                container = Containers.SingleOrDefault(c => c.Name == containerName);
 
-                Containers.Add(container);
+                if (container == null)
+                {
+                    container = BlobClient.GetContainerReference(containerName);
+
+                    if (!container.Exists())
+                    {
+                        container = ContainerFactory(containerName);
+                    }
+
+                    Containers.Add(container);
+                }
             }
 
             if (path.StartsWith("/") || path.StartsWith("http://") || path.StartsWith("https://"))
